@@ -1,37 +1,62 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-// components
+
 import ListTable from './ListTable';
 import FilterChips from './FilterChips';
-// constants
+import Paging from './Paging';
+
+import { withStyles } from '@material-ui/core/styles';
+import { appStyle } from './style/appStyle';
+
 const DATA = require('./data/data.json')
 
-const App = () => {
+const App = ({ classes }) => {
   const [selectedListIDs, setSelectedListIDs] = useState([])
+  const [page, setPage] = useState(1)
+  const [perPage, setPerPage] = useState(10)
+
   // sorting by the listID first then by the name
-  const sortedList = DATA.filter(data => !!data.name).sort((a, b) => {
-    if (a.listId > b.listId) {
-      return 1
-    }
-    if (b.listId > a.listId) {
-      return -1
-    }
-    // using .id instead of .name as the `name` contains `ID` as the suffix numeric value
-    if (a.id > b.id) {
-      return 1
-    }
-    if (b.id > a.id) {
-      return -1
-    }
-    return 0
-  });
-  const list = sortedList.filter(data => selectedListIDs.includes(data.listId))
+  const list = DATA
+    .filter(data => !!data.name)
+    .sort((first, second) => {
+      if (first.listId > second.listId) {
+        return 1
+      } else if (first.listId < second.listId) {
+        return -1
+      }
+      // using .id to sort by name as `name` contains `ID` as a suffix
+      if (first.id > second.id) {
+        return 1
+      } else if (first.id < second.id) {
+        return -1
+      }
+      return 0
+    })
+    .filter(data => selectedListIDs.includes(data.listId));
+
+  const totalResults = list.length;
+  const indexOfLastItem = page * perPage;
+  const indexOfFirstItem = indexOfLastItem - perPage;
+  const currentList = list.slice(indexOfFirstItem, indexOfLastItem)
 
   return (
-    <div>
-      <FilterChips setSelectedListIDs={setSelectedListIDs} selectedListIDs={selectedListIDs} />
-      <ListTable list={list} />
-      {/* pagination */}
+    <div className={classes.rootContainer}>
+      <FilterChips
+        setSelectedListIDs={setSelectedListIDs}
+        selectedListIDs={selectedListIDs}
+        setPage={setPage}
+      />
+      <ListTable list={currentList} />
+      <Paging
+        page={page}
+        perPage={perPage}
+        setPage={setPage}
+        setPerPage={(value) => {
+          setPage(1);
+          setPerPage(value);
+        }}
+        totalResults={totalResults}
+      />
     </div>
   );
 };
@@ -40,4 +65,4 @@ App.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default App;
+export default withStyles(appStyle)(App);

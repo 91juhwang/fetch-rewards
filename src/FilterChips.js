@@ -11,13 +11,15 @@ const FilterChips = ({
   classes,
   setSelectedListIDs,
   selectedListIDs,
+  setPage,
 }) => {
   const chipSelected = chip => selectedListIDs.includes(chip);
 
   const handleClick = (chip) => {
     if (chipSelected(chip)) {
-      setSelectedListIDs(selectedListIDs.filter(item => item !== chip))
+      setSelectedListIDs(selectedListIDs.filter(item => item !== chip));
     } else {
+      setPage(1);
       setSelectedListIDs([...selectedListIDs, chip]);
     }
   };

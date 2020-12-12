@@ -16,7 +16,7 @@ const ListTable = ({ classes, list }) => (
     <Table className={classes.dataTable}>
       <TableHead className={classes.dataTableHead}>
         <TableRow className={classes.dataTableRow}>
-          <TableCell className={classes.dataTableCell}>ListID</TableCell>
+          <TableCell className={classes.dataTableCell}>List ID</TableCell>
           <TableCell className={classes.dataTableCell}>Name</TableCell>
         </TableRow>
       </TableHead>
@@ -42,6 +42,7 @@ const ListTable = ({ classes, list }) => (
 
 ListTable.propTypes = {
   classes: PropTypes.object.isRequired,
+  list: PropTypes.array.isRequired,
 };
 
 export default withStyles(tableStyle)(ListTable);

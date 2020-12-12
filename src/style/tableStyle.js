@@ -15,16 +15,6 @@ export const tableStyle = ({
     color: palette.grey[300],
   };
   return {
-    container: {
-      margin: spacing(4),
-    },
-    dataTableContainer: {
-      margin: {
-        top: spacing(2),
-        bottom: spacing(2),
-      },
-    },
-    dataTable: {},
     dataTableHead: {
       'backgroundColor': palette.grey[100],
       '& $dataTableCell': smallHeading,
@@ -36,7 +26,9 @@ export const tableStyle = ({
         },
       },
     },
-    dataTableBody: {},
+    dataTable: {
+      border: `1px solid ${palette.grey[300]}`
+    },
     dataTableRow: {
       '&:nth-of-type(even)': {
         backgroundColor: palette.grey[50],
