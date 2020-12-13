@@ -34,6 +34,7 @@ const App = ({ classes }) => {
     })
     .filter(data => selectedListIDs.includes(data.listId))
 
+  // pagination
   const totalResults = list.length
   const indexOfLastItem = page * perPage
   const indexOfFirstItem = indexOfLastItem - perPage
@@ -62,7 +63,7 @@ const App = ({ classes }) => {
 }
 
 App.propTypes = {
-  classes: PropTypes.object.isRequired,
+  classes: PropTypes.object.isRequired
 }
 
 export default withStyles(appStyle)(App)

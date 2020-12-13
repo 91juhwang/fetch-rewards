@@ -34,7 +34,7 @@ const FilterChips = ({
       <Typography variant="body1" align="center" className={classes.heading}>
         Select chips to view the list
       </Typography>
-      <div className={classes.filterChipsContainer}>
+      <div className={classes.filterChipsContainer} data-testid="chips">
         {LIST_IDS.map(chip => (
           <Chip
             icon={
@@ -56,6 +56,7 @@ const FilterChips = ({
               clickable: classes.filterChipsContainer,
               outlined: chipSelected(chip) ? classes.filterChipOutlined : classes.filterChipNoOutline
             }}
+            data-testid="chip"
           />
         ))}
       </div>

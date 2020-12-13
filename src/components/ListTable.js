@@ -42,7 +42,7 @@ const ListTable = ({ classes, list }) => (
 
 ListTable.propTypes = {
   classes: PropTypes.object.isRequired,
-  list: PropTypes.array.isRequired,
+  list: PropTypes.array.isRequired
 }
 
 export default withStyles(tableStyle)(ListTable)
