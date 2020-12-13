@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
-import ListTable from './ListTable';
-import FilterChips from './FilterChips';
-import Paging from './Paging';
+import ListTable from './components/ListTable'
+import FilterChips from './components/FilterChips'
+import Paging from './components/Paging'
 
-import { withStyles } from '@material-ui/core/styles';
-import { appStyle } from './style/appStyle';
+import { withStyles } from '@material-ui/core/styles'
+import { appStyle } from './style/appStyle'
 
 const DATA = require('./data/data.json')
 
@@ -32,11 +32,11 @@ const App = ({ classes }) => {
       }
       return 0
     })
-    .filter(data => selectedListIDs.includes(data.listId));
+    .filter(data => selectedListIDs.includes(data.listId))
 
-  const totalResults = list.length;
-  const indexOfLastItem = page * perPage;
-  const indexOfFirstItem = indexOfLastItem - perPage;
+  const totalResults = list.length
+  const indexOfLastItem = page * perPage
+  const indexOfFirstItem = indexOfLastItem - perPage
   const currentList = list.slice(indexOfFirstItem, indexOfLastItem)
 
   return (
@@ -52,17 +52,17 @@ const App = ({ classes }) => {
         perPage={perPage}
         setPage={setPage}
         setPerPage={(value) => {
-          setPage(1);
-          setPerPage(value);
+          setPage(1)
+          setPerPage(value)
         }}
         totalResults={totalResults}
       />
     </div>
-  );
-};
+  )
+}
 
 App.propTypes = {
   classes: PropTypes.object.isRequired,
-};
+}
 
-export default withStyles(appStyle)(App);
+export default withStyles(appStyle)(App)

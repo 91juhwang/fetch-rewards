@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 import {
   Select,
-  IconButton,
-} from '@material-ui/core';
-import RightIcon from '@material-ui/icons/ChevronRight';
-import LeftIcon from '@material-ui/icons/ChevronLeft';
-import { withStyles } from '@material-ui/core/styles';
-import { pagingStyle } from './style/pagingStyle';
+  IconButton
+} from '@material-ui/core'
+import RightIcon from '@material-ui/icons/ChevronRight'
+import LeftIcon from '@material-ui/icons/ChevronLeft'
+import { withStyles } from '@material-ui/core/styles'
+import { pagingStyle } from '../style/pagingStyle'
 
 export const Paging = ({
   classes,
@@ -16,9 +16,9 @@ export const Paging = ({
   perPage,
   setPage,
   setPerPage,
-  totalResults,
+  totalResults
 }) => {
-  const totalPages = Math.ceil(totalResults / perPage);
+  const totalPages = Math.ceil(totalResults / perPage)
   return (
     <div className={classes.pagingContainer}>
       <div className={classes.perPageContainer}>
@@ -29,7 +29,7 @@ export const Paging = ({
           className={classes.perPageSelectComponent}
           classes={{
             root: classes.perPageSelect,
-            select: classes.perPageSelectControl,
+            select: classes.perPageSelectControl
           }}
           value={perPage}
           onChange={event => setPerPage(parseInt(event.target.value, 10))}
@@ -48,7 +48,7 @@ export const Paging = ({
             className={classes.pagingButton}
             classes={{
               root: classes.pagingButtonLeft,
-              disabled: classes.pagingButtonDisabled,
+              disabled: classes.pagingButtonDisabled
             }}
             onClick={() => setPage(page - 1)}
             disabled={page === 1}
@@ -61,7 +61,7 @@ export const Paging = ({
             className={classes.pagingButton}
             classes={{
               root: classes.pagingButtonRight,
-              disabled: classes.pagingButtonDisabled,
+              disabled: classes.pagingButtonDisabled
             }}
             onClick={() => setPage(page + 1)}
             disabled={(page >= totalPages)}
@@ -71,8 +71,8 @@ export const Paging = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
 Paging.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -80,7 +80,7 @@ Paging.propTypes = {
   perPage: PropTypes.number.isRequired,
   setPage: PropTypes.func.isRequired,
   setPerPage: PropTypes.func.isRequired,
-  totalResults: PropTypes.number.isRequired,
-};
+  totalResults: PropTypes.number.isRequired
+}
 
-export default withStyles(pagingStyle)(Paging);
+export default withStyles(pagingStyle)(Paging)

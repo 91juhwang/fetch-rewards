@@ -1,15 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/core/styles'
 import {
   TableContainer,
   Table,
   TableBody,
   TableCell,
   TableHead,
-  TableRow,
-} from '@material-ui/core';
-import { tableStyle } from './style/tableStyle';
+  TableRow
+} from '@material-ui/core'
+import { tableStyle } from '../style/tableStyle'
 
 const ListTable = ({ classes, list }) => (
   <TableContainer className={classes.dataTableContainer}>
@@ -38,11 +38,11 @@ const ListTable = ({ classes, list }) => (
       </TableBody>
     </Table>
   </TableContainer>
-);
+)
 
 ListTable.propTypes = {
   classes: PropTypes.object.isRequired,
   list: PropTypes.array.isRequired,
-};
+}
 
-export default withStyles(tableStyle)(ListTable);
+export default withStyles(tableStyle)(ListTable)
